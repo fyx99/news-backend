@@ -1,0 +1,74 @@
+POST http://localhost:3000/app/statistics/read HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": "74d06a24-ae32-4cf3-be20-a8d98be251b4",
+    "article_id": "1573",
+    "start_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "end_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "max_scroll": 1
+}
+###
+POST http://localhost:3000/app/statistics/impression HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": "74d06a24-ae32-4cf3-be20-a8d98be251b4",
+    "article_id": "1573",
+    "start_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "end_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "rank": 1
+}
+
+###
+GET http://localhost:3000/app/feed?offset=100 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+###
+GET http://localhost:3001/app/healtz HTTP/1.1
+content-type: application/json
+###
+POST http://localhost:3000/app/query HTTP/1.1
+content-type: application/json
+
+{
+    "query": "SELECT 1"
+}
+
+###
+GET http://127.0.0.1:3000/app/feed?offset=a HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+
+###
+GET http://138.68.74.3:3000/app/feed?offset=1 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+###
+
+POST http://138.68.74.3:3000/app/statistics/impression HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": "74d06a24-ae32-4cf3-be20-a8d98be251b4",
+    "article_id": "1573",
+    "start_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "end_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "rank": 1
+}
+
+
+

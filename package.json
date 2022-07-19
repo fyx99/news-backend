@@ -1,0 +1,32 @@
+{
+  "name": "cleaning-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "compose-middleware": "^2.2.0",
+    "dotenv": "^4.0.0",
+    "express": "^5.0.0-alpha.2",
+    "express-promise-router": "^4.1.1",
+    "jwt-simple": "^0.5.1",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.7.3",
+    "sequelize": "^4.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

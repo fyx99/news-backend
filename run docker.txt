@@ -1,0 +1,21 @@
+docker build -t fxxy/news-backend . ; docker push fxxy/news-backend
+
+
+docker run --rm -p 3000:3000 fxxy/news-backend 
+
+docker pull fxxy/news-backend && docker stop newsbackend || echo 'Container already stopped' && docker run --name newsbackend --rm -d --network=dropnetwork -p 3000:3000 --env-file /env/drop.env fxxy/news-backend 
+
+
+
+
+docker run --rm -p 3001:3001  fxxy/news-backend 
+
+
+
+cat test/load.js | docker run -i grafana/k6 run --vus 5 --iterations 1000 -
+
+
+        
+
+
+    
