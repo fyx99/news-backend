@@ -2,27 +2,27 @@ const db = require("../db/postgresql")
 const router = require('express').Router();
 const axios = require('axios');
 
-const recommend_service_host = "http://" + process.env.NR_HOST + ":" + process.env.NR_PORT  || "http://localhost:8000"
+const recommend_service_host = "http://" + process.env.NR_HOST + ":" + process.env.NR_PORT || "http://localhost:8000"
 
 router.get("/", async (req, res) => {
     const offset = (req.query.offset && req.query.offset >= 0) ? req.query.offset : 0
     let response = null
-    try{
-        response = await axios.get(recommend_service_host + '/content/' + '74d06a24-ae32-4cf3-be20-a8d98be251b4', timeout=1000)
+    try {
+        response = await axios.get(recommend_service_host + '/content/' + '74d06a24-ae32-4cf3-be20-a8d98be251b4', timeout = 1000)
     }
-    catch(e){
+    catch (e) {
 
         console.log("Error in Call to Newsrecommend")
         console.log(e);
     }
 
-    if(response){
+    if (response) {
         console.log(response);
         console.log(response.explanation);
         console.log(response.data);
         res.json(response.data)
     }
-    else{
+    else {
         console.log("Fallback Postgres Direct Query")
         const qres = await db.query(`
         select C.* from (
@@ -31,8 +31,8 @@ router.get("/", async (req, res) => {
         where user_id = $1
         except select A.* from Articles_clean as A inner join Preferences as P on A.feed = p.feed_url
         where type = 'UNFOLLOW' and user_id = $1 ) as C
-        limit 50 offset $2`,
-        ['74d06a24-ae32-4cf3-be20-a8d98be251b4', offset])
+        limit 150 offset $2`,
+            ['74d06a24-ae32-4cf3-be20-a8d98be251b4', offset])
         res.json(qres.rows)
     }
 

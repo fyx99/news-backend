@@ -14,8 +14,14 @@ const pool = new Pool({
 module.exports = {
   query: async (text, params) => {
     //console.time("query");
-    const qres = await pool.query(text, params)
+    try {
+      const qres = await pool.query(text, params)
+      return qres
+    } catch (error) {
+      return Error(error)
+    }
+    
     //console.timeEnd("query");
-    return qres
+    
   },
 }

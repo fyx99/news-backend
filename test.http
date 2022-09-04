@@ -53,10 +53,7 @@ content-type: application/json
 GET http://138.68.74.3:3000/app/feed?offset=1 HTTP/1.1
 content-type: application/json
 
-{
-    "name": "sample",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
-}
+
 ###
 
 POST http://138.68.74.3:3000/app/statistics/impression HTTP/1.1
@@ -72,3 +69,33 @@ content-type: application/json
 
 
 
+
+###
+POST http://127.0.0.1:3000/app/users HTTP/1.1
+content-type: application/json
+
+{
+    "email": "user10@mail.com"
+}
+
+
+###
+DELETE http://127.0.0.1:3000/app/users/da29c503-e4b5-488a-abdc-e09afa54b0da HTTP/1.1
+content-type: application/json
+
+
+
+###
+POST http://127.0.0.1:3000/app/events HTTP/1.1
+content-type: application/json
+
+{
+    "event_type": "read",
+    "event_data": {
+        "user_id": "74d06a24-ae32-4cf3-be20-a8d98be251b4",
+        "article_id": "1573",
+        "start_date": "2022-09-04T21:36:31.303Z",
+        "end_date": "2022-09-04T21:39:31.303Z",
+        "max_scroll": 3
+    }
+}

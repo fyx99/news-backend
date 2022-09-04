@@ -1,7 +1,9 @@
 const express = require('express');
 // const userRoutes = require('./user.route');
 const statistics = require('../controllers/interactions');
+const users = require('../controllers/user');
 const feed = require('../controllers/feed');
+const events = require('../controllers/event');
 const db = require("../db/postgresql")
 
 
@@ -12,6 +14,8 @@ router.get('/status', (req, res) => res.send('OK'));
 
 router.use('/statistics', statistics);
 router.use('/feed', feed);
+router.use('/users', users);
+router.use('/events', events);
 
 router.get('/healtz', async (req, res) => {    
     const db_res = await db.query("select 1 + 2 as result;")
