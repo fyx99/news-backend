@@ -19,6 +19,42 @@ The backend is fully **Dockerized** and deployed on the same VM as the rest of t
 
 ---
 
+## 📡 **API Endpoints**
+
+### 📊 **Track User Reading Interaction**
+**POST /app/statistics/read**
+```json
+{
+    "user_id": "74d06a24-ae32-4cf3-be20-a8d98be251b4",
+    "article_id": "1573",
+    "start_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "end_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "max_scroll": 1
+}
+```
+
+### 📊 **Track User Impressions**
+**POST /app/statistics/impression**
+```json
+{
+    "user_id": "74d06a24-ae32-4cf3-be20-a8d98be251b4",
+    "article_id": "1573",
+    "start_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "end_date": "Wed, 09 Feb 2022 22:16:40 GMT",
+    "rank": 1
+}
+```
+
+### 📡 **Fetch News Feed**
+**GET /app/feed?offset=100**
+```json
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+```
+---
+
 ## 📦 **Getting Started**
 
 ### 🔧 **Build and Push Docker Image:**
