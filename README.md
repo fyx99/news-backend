@@ -1,39 +1,65 @@
-# Express Postgres API
+# 🚀 **News Aggregator App Backend**
 
+This repository contains the **Node.js backend** for the **NewsAggregator Project**. It serves curated news feeds from a **PostgreSQL database** to the frontend layer and collects various **user interaction metrics** such as:
+
+- 🖱️ **Clicks**
+- ⏱️ **View Time**
+- 📊 **Other Engagement Data**
+
+The collected interaction data is asynchronously sent back to the **PostgreSQL data backend** for further analysis and feature engineering.
+
+The backend is fully **Dockerized** and deployed on the same VM as the rest of the project infrastructure.
+
+---
+
+## 🛠️ **Key Features**
+
+ **Curated News Feed Delivery:** Fetches and serves news data efficiently.
+ **User Interaction Tracking:** Tracks engagement metrics and pushes them to the backend asynchronously.
+
+---
+
+## 📦 **Getting Started**
+
+### 🔧 **Build and Push Docker Image:**
+```bash
+docker build -t fxxy/news-backend . ; docker push fxxy/news-backend
 ```
-Postgresql
-passport
-Express
+
+### 🚀 **Run the Backend Locally:**
+```bash
+docker run --rm -p 3000:3000 fxxy/news-backend
 ```
 
-# Beginners Friendly Node.js API
-
-I made this server because most of the other Node API's are either too bloated.
-Full of things you don't understand or will never use. Or are just plain
-outdated.
-
-
-## How To
-
-
-Start the server
-```
-npm run start:dev
+### 🌐 **Deploy on VM:**
+```bash
+docker pull fxxy/news-backend && docker stop newsbackend || echo 'Container already stopped' && \
+docker run --name newsbackend --rm -d --network=dropnetwork -p 3000:3000 --env-file /env/drop.env fxxy/news-backend
 ```
 
-## Based on this tutorial
+### 🧪 **Run on Alternate Port (e.g., for Testing):**
+```bash
+docker run --rm -p 3001:3001 fxxy/news-backend
+```
 
-https://scotch.io/tutorials/getting-started-with-node-express-and-postgres-using-sequelize
+### 📊 **Performance Testing with k6:**
+```bash
+cat test/load.js | docker run -i grafana/k6 run --vus 5 --iterations 1000 -
+```
 
+---
 
-## Features
+## 📚 **Environment Variables**
+Ensure you have a properly configured `/env/drop.env` file with required environment variables, such as:
+- `DB_HOST`
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_NAME`
 
-- Token based Authentication through passport
-- Database management with Sequelize
-- No callback hell. All promise based.
+---
 
-# In the future
+## 📈 **Monitoring & Logging**
+- Monitor application logs using `docker logs newsbackend`
+- Use tools like **Grafana** and **k6** for performance and load testing.
 
-- Graphql integration
-- Shipit file for easy deployments
-
+---
